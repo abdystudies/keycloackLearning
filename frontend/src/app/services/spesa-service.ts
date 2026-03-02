@@ -9,7 +9,7 @@ export class SpesaService {
   private http = inject(HttpClient);
   private keycloak = inject(Keycloak);
   //ricordate di aprire la porta del server
-  private baseUrl = 'https://3cfkbzcd-5000.euw.devtunnels.ms/'
+  private baseUrl = 'https://3cfkbzcd-5000.euw.devtunnels.ms';
   //ci serve per allegare il token ad ogni
   //richiesta http
   private getHeaders(): HttpHeaders {

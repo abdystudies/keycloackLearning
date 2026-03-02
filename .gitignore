@@ -1,0 +1,6 @@
+backend/.env
+frontend/.vscode
+frontend/.angular
+frontend/package-lock.json
+frontend/.prettierrc
+frontend/.editorconfig
