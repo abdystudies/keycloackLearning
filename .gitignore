@@ -4,3 +4,4 @@ frontend/.angular
 frontend/package-lock.json
 frontend/.prettierrc
 frontend/.editorconfig
+AGENTS.md
