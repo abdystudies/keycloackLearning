@@ -1,0 +1,11 @@
+<h1>Profilo</h1>
+<p>Username: <strong>{{ auth.getUsername() }}</strong></p>
+<h2>JWT Token</h2>
+<code style="word-break: break-all;">
+{{ auth.getToken() }}
+</code>
+<p>
+Puoi decodificarlo e ispezionarne il contenuto su
+<a href="https://jwt.io" target="_blank">jwt.io</a>
+incollando il token qui sopra.
+</p>

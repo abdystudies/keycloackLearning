@@ -1,0 +1,19 @@
+<nav>
+<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:
+true }">Home</a>
+&nbsp;
+@if (auth.isLoggedIn()) {
+<a routerLink="/profile" routerLinkActive="active">Profile</a>
+&nbsp;
+<a routerLink="/spesa" routerLinkActive="active">Lista spesa</a>
+&nbsp;
+<span>{{ auth.getUsername() }}</span>
+&nbsp;
+<button (click)="auth.logout()">Logout</button>
+} @else {
+<button (click)="auth.login()">Login</button>
+}
+</nav>
+<main>
+<router-outlet />
+</main>

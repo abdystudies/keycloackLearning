@@ -1,0 +1,22 @@
+<h1>Lista della spesa</h1>
+<form (ngSubmit)="addItem()">
+<input
+[value]="newItem()"
+(input)="newItem.set($any($event.target).value)"
+placeholder="Es. Latte, Pane..."
+required
+/>
+<button type="submit">Aggiungi</button>
+</form>
+@if (error()) {
+<p>{{ error() }}</p>
+}
+@if (items().length === 0) {
+<p>Nessun elemento nella lista.</p>
+} @else {
+<ul>
+@for (item of items(); track item) {
+<li>{{ item }}</li>
+}
+</ul>
+}

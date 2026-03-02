@@ -1,0 +1,3 @@
+<h1>Home</h1>
+<p *ngIf="!auth.isLoggedIn()">Benvenuto! Fai login per accedere al profilo</p>
+<p *ngIf="auth.isLoggedIn()">Sei autenticato come {{ auth.getUsername() }}</p>
