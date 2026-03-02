@@ -15,8 +15,11 @@ required
 <p>Nessun elemento nella lista.</p>
 } @else {
 <ul>
-@for (item of items(); track item) {
-<li>{{ item }}</li>
+@for (item of items(); track $index; let i = $index) {
+<li>
+  {{ item }}
+  <button type="button" (click)="deleteItem(i)">Elimina</button>
+</li>
 }
 </ul>
 }

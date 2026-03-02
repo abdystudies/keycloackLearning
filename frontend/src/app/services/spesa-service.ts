@@ -30,4 +30,11 @@ export class SpesaService {
       { headers: this.getHeaders() }
     );
   }
+
+  deleteItem(itemIndex: number): Observable<{ items: string[] }> {
+    return this.http.delete<{ items: string[] }>(
+      `${this.baseUrl}/items/${itemIndex}`,
+      { headers: this.getHeaders() }
+    );
+  }
 }

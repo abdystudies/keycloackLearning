@@ -29,4 +29,14 @@ export class ListaSpesa implements OnInit {
       error: () => this.error.set("Errore durante l'aggiunta"),
     });
   }
+
+  deleteItem(index: number): void {
+    this.spesaService.deleteItem(index).subscribe({
+      next: (res) => {
+        this.items.set(res.items);
+        this.error.set('');
+      },
+      error: () => this.error.set("Errore durante l'eliminazione"),
+    });
+  }
 }

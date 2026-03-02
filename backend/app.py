@@ -31,5 +31,17 @@ def add_item():
     shopping_lists[username].append(item)
     return jsonify({"message": "Aggiunto", "items": shopping_lists[username]}), 201
 
+@app.route("/items/<int:item_index>", methods=["DELETE"])
+@require_auth
+def delete_item(item_index: int):
+    username = g.user.get("preferred_username")
+    items = shopping_lists.get(username, [])
+
+    if item_index < 0 or item_index >= len(items):
+        return jsonify({"error": "Indice elemento non valido"}), 404
+
+    items.pop(item_index)
+    return jsonify({"message": "Eliminato", "items": items}), 200
+
 if __name__ == "__main__":
     app.run(debug=True)
