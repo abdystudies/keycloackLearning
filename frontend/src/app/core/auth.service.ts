@@ -24,4 +24,9 @@ export class AuthService {
     getToken(): string | undefined {
             return this.keycloak.token;
         }
+    hasRole(role: string): boolean {
+        return this.keycloak.tokenParsed?.['realm_access']?.roles?.includes(role) ??
+        false;
+    }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SpesaService } from '../../services/spesa-service';
+import { AuthService } from '../../core/auth.service';
 @Component({
   selector: 'app-lista-spesa',
   imports: [FormsModule],
@@ -9,6 +10,7 @@ import { SpesaService } from '../../services/spesa-service';
 })
 export class ListaSpesa implements OnInit {
   private spesaService = inject(SpesaService);
+  authService = inject(AuthService);
   items = signal<string[]>([]);
   newItem = signal('');
   error = signal('');

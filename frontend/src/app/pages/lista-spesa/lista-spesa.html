@@ -23,3 +23,9 @@ required
 }
 </ul>
 }
+@if (items().length === 0) {
+<p>Nessun elemento in lista.</p>
+}
+@if (error()) {
+<p>{{ error() }}</p>
+}

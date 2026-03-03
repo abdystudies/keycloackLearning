@@ -82,3 +82,24 @@ def require_auth(f):
         return f(*args, **kwargs)
 
     return decorated
+
+def get_roles(payload: dict) -> list:
+    #cerca i ruoli nel jwt
+    return payload.get("realm_access", {}) \
+                  .get("roles", []) #risultato: ["user"], ["user_plus"] oppure []
+
+#decoratore che useremo nell'app.py
+#per proteggere le rotte in base al ruolo
+def require_role(role: str):
+    #riceve il ruolo 
+    def decorator(f):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            #g.user esiste già perché @require_auth è passato prima
+            if role not in get_roles(g.user):
+                #ruolo non trovato 403 Forbidden
+                return jsonify({"error": "Permesso negato"}), 403
+            #ruolo trovato esegue la route normalmente
+            return f(*args, **kwargs)
+        return wrapper
+    return decorator
